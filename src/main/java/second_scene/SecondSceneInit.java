@@ -21,7 +21,7 @@ public class SecondSceneInit {
     private FlowPane panel = new FlowPane(Orientation.VERTICAL, 60, 30);
     private ButtonsIcons buttonsIcons = new ButtonsIcons();
     private ButtonsEffects buttonsEffects = new ButtonsEffects();
-    private static ArrayList<Button> buttonsList = new ArrayList<>(9);
+    private static ArrayList<Button> buttonsList = new ArrayList<>();
 
 
 
@@ -34,7 +34,7 @@ public class SecondSceneInit {
     }
 
     private void addButtonsToList() {
-        for (int i = 0; i < 6; i++) {
+        for (int i = 0; i < 8; i++) {
             buttonsList.add(new Button());
         }
 
@@ -43,11 +43,11 @@ public class SecondSceneInit {
     private Pane getPanel() {
         addButtonsToList();
         for (Button button : buttonsList) {
-            button.setPrefSize(130, 130);
+            button.setPrefSize(170, 170);
             button.setStyle("-fx-base: #83c5eb");
            button.setShape(new Circle(1));
             panel.getChildren().add(button);
-            panel.setPadding(new Insets(110, 0, 0, 215));
+            panel.setPadding(new Insets(110, 0, 200, 67));
         }
         setButtonsEffects();
         return panel;
@@ -60,29 +60,36 @@ public class SecondSceneInit {
             buttonsList.get(0).setGraphic(buttonsIcons.getImageViewMoney());
             buttonsList.get(0).setTooltip(buttonsEffects.getAccountInfoButton());
 
-            buttonsList.get(1).setGraphic(buttonsIcons.getImageViewExchange());
-            buttonsList.get(1).setTooltip(buttonsEffects.getTransferButton());
+            buttonsList.get(1).setGraphic(buttonsIcons.getImageViewFruit());
+            buttonsList.get(1).setTooltip(buttonsEffects.getFruitButton());
 
-            buttonsList.get(2).setGraphic(buttonsIcons.getImageViewTransportTickets());
-            buttonsList.get(2).setTooltip(buttonsEffects.getBuyTicketsButton());
+            buttonsList.get(2).setGraphic(buttonsIcons.getImageViewBread());
+            buttonsList.get(2).setTooltip(buttonsEffects.getBreadButton());
 
-            buttonsList.get(3).setGraphic(buttonsIcons.getImageViewTransfer());
-            buttonsList.get(3).setTooltip(buttonsEffects.getExchangeButton());
+            buttonsList.get(3).setGraphic(buttonsIcons.getImageViewExchange());
+            buttonsList.get(3).setTooltip(buttonsEffects.getExchangeMoneyButton());
 
             buttonsList.get(4).setGraphic(buttonsIcons.getImageViewSmartphonePay());
-            buttonsList.get(4).setTooltip(buttonsEffects.getSmartphonepayment());
+            buttonsList.get(4).setTooltip(buttonsEffects.getPaymentPhoneButton());
 
-            buttonsList.get(5).setGraphic(buttonsIcons.getImageViewPhoneAccountMoney());
-            buttonsList.get(5).setTooltip(buttonsEffects.getPhoneAccountMoney());
+            buttonsList.get(5).setGraphic(buttonsIcons.getImageViewDrink());
+            buttonsList.get(5).setTooltip(buttonsEffects.getDrinksButton());
+
+
+            buttonsList.get(6).setGraphic(buttonsIcons.getImageViewVegetable());
+            buttonsList.get(6).setTooltip(buttonsEffects.getVegetableButton());
 
         }
 
     }
 
 
+
     public Group getSecondGroupLayout() {
-        return secondGroupLayout = new Group();
+      return   secondGroupLayout = new Group();
     }
+
+
 
     public void addToSecondLayout() {
         secondGroupLayout.getChildren().addAll(getPanel());
@@ -94,7 +101,8 @@ public class SecondSceneInit {
     }
 
     public Scene getDuplicateScene() {
-      set();
+    set();
       return duplicateScene;
     }
+
 }

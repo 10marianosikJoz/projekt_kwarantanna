@@ -3,177 +3,164 @@ package scenes_init;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ContentDisplay;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.ToggleGroup;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
+import options_components.BreadOptionComponents;
+import textfields_formatters.InputAmountFieldsFormatter;
 
 import java.util.ArrayList;
 
 public class BreadOptionScene {
-    private static ArrayList<ToggleButton> toggleButtons = new ArrayList<>(3);
-    private static ToggleGroup toggleGroup = new ToggleGroup();
-    private static Button buyTicketButton = new Button("BUY");
-    private static AccountInfoScene accountInfoScene = new AccountInfoScene();
+
+
     private Group group;
     private Scene scene;
-    private Image transportTickets = new Image("transport_ticket.png");
-    private ImageView imageViewTransportTickets = new ImageView(transportTickets);
-    private Image secondTypeTransportTickets = new Image("transport_ticket.png");
-    private ImageView imageViewSecondTypeTickets = new ImageView(secondTypeTransportTickets);
-    private Image thirdTypeTransportTickets = new Image("transport_ticket.png");
-    private ImageView imageViewThirdTypeTickets = new ImageView(thirdTypeTransportTickets);
-    private Pane pane = new Pane();
+    private Pane panel = new Pane();
     private Button backToMenu = new Button("BACK TO MENU");
+    private ArrayList<TextField> textFieldsAmountBread = new ArrayList<>();
+    private InputAmountFieldsFormatter inputAmountFieldsFormatter = new InputAmountFieldsFormatter();
+    static TextField dupa = new TextField();
+//    private static Button buyTicketButton = new Button("BUY");
 
+    private BreadOptionComponents breadOptionComponents = new BreadOptionComponents();
 
     private void setBackToMenuButtonProparties() {
-        backToMenu.setLayoutX(200);
-        backToMenu.setLayoutY(400);
-        backToMenu.setStyle("-fx-background-color: #7E807F; ");
+        backToMenu.setLayoutX(350);
+        backToMenu.setLayoutY(550);
+        backToMenu.setStyle("-fx-background-color: #4e524e; -fx-background-radius: 22  ");
         backToMenu.setPrefSize(150, 35);
         backToMenu.setTextFill(Color.WHITE);
         backToMenu.setDisable(false);
 
     }
 
+
+
     public Button getBackToMenuButton() {
         setBackToMenuButtonProparties();
         return backToMenu;
     }
-
-    private void setBuyTicketButtonProparties() {
-        buyTicketButton.setLayoutX(225);
-        buyTicketButton.setLayoutY(330);
-        buyTicketButton.setPrefSize(100, 40);
-        buyTicketButton.setStyle("-fx-background-color: #CFB53B; ");
-        buyTicketButton.setTextFill(Color.WHITE);
-
-    }
-
-    public Button getBuyTicketButton() {
-        setBuyTicketButtonProparties();
-        return buyTicketButton;
-    }
-
-    private Pane getPane() {
-        pane.getChildren().addAll(getToggleButtons());
-        addToggleButtonsToGroup();
-        return pane;
-    }
-
-    private void createToggleButtons() {
-        for (int i = 0; i < 3; i++) {
-            toggleButtons.add(new ToggleButton());
-
+    private void addTextFieldsToList() {
+        for (int i = 0; i < 12; i++) {
+            textFieldsAmountBread.add(new TextField());
         }
     }
 
-    private void addToggleButtonsToGroup() {
-        for (int i = 0; i < 3; i++) {
-            toggleButtons.get(i).setToggleGroup(toggleGroup);
-
+    private void setTextFieldsPreferredSizes() {
+        for (TextField textField : textFieldsAmountBread) {
+            textField.setPrefSize(35, 35);
         }
     }
 
-    private void setToggleButtonsProparties() {
-        for (int i = 0; i < 3; i++) {
+    private void setTextFieldsProperties() {
+        textFieldsAmountBread.get(0).setLayoutX(35);
+        textFieldsAmountBread.get(0).setLayoutY(160);
+        textFieldsAmountBread.get(0).setTextFormatter(inputAmountFieldsFormatter.getAmountNumberFormatter());
 
-            toggleButtons.get(0).setLayoutY(50);
-            toggleButtons.get(0).setLayoutX(15);
-            toggleButtons.get(0).setText("30 min / 2.00 $");
-            toggleButtons.get(0).setFont(Font.font("Verdana", FontWeight.BOLD, 12));
-            toggleButtons.get(0).setTextFill(Color.BLACK);
-            toggleButtons.get(0).setContentDisplay(ContentDisplay.TOP);
+        textFieldsAmountBread.get(1).setLayoutX(165);
+        textFieldsAmountBread.get(1).setLayoutY(160);
+        textFieldsAmountBread.get(1).setTextFormatter(inputAmountFieldsFormatter.getAmountNumberFormatter());
+
+        textFieldsAmountBread.get(2).setLayoutX(285);
+        textFieldsAmountBread.get(2).setLayoutY(160);
+        textFieldsAmountBread.get(2).setTextFormatter(inputAmountFieldsFormatter.getAmountNumberFormatter());
+
+        textFieldsAmountBread.get(3).setLayoutX(435);
+        textFieldsAmountBread.get(3).setLayoutY(160);
+        textFieldsAmountBread.get(3).setTextFormatter(inputAmountFieldsFormatter.getAmountNumberFormatter());
+
+        textFieldsAmountBread.get(4).setLayoutX(585);
+        textFieldsAmountBread.get(4).setLayoutY(160);
+        textFieldsAmountBread.get(4).setTextFormatter(inputAmountFieldsFormatter.getAmountNumberFormatter());
+
+        textFieldsAmountBread.get(5).setLayoutX(725);
+        textFieldsAmountBread.get(5).setLayoutY(160);
+        textFieldsAmountBread.get(5).setTextFormatter(inputAmountFieldsFormatter.getAmountNumberFormatter());
+
+        textFieldsAmountBread.get(6).setLayoutX(85);
+        textFieldsAmountBread.get(6).setLayoutY(160);
+        textFieldsAmountBread.get(6).setText("30");
+        textFieldsAmountBread.get(6).setEditable(false);
+        textFieldsAmountBread.get(6).setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+
+        textFieldsAmountBread.get(7).setLayoutX(215);
+        textFieldsAmountBread.get(7).setLayoutY(160);
+        textFieldsAmountBread.get(7).setText("30");
+        textFieldsAmountBread.get(7).setEditable(false);
+        textFieldsAmountBread.get(7).setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+
+        textFieldsAmountBread.get(8).setLayoutX(335);
+        textFieldsAmountBread.get(8).setLayoutY(160);
+        textFieldsAmountBread.get(8).setText("30");
+        textFieldsAmountBread.get(8).setEditable(false);
+        textFieldsAmountBread.get(8).setFont(Font.font("Verdana", FontWeight.BOLD, 12));
 
 
-            toggleButtons.get(1).setLayoutY(50);
-            toggleButtons.get(1).setLayoutX(200);
-            toggleButtons.get(1).setText("1 h / 3.00 $");
-            toggleButtons.get(1).setFont(Font.font("Verdana", FontWeight.BOLD, 12));
-            toggleButtons.get(1).setTextFill(Color.BLACK);
-            toggleButtons.get(1).setContentDisplay(ContentDisplay.TOP);
+        textFieldsAmountBread.get(9).setLayoutX(485);
+        textFieldsAmountBread.get(9).setLayoutY(160);
+        textFieldsAmountBread.get(9).setText("30");
+        textFieldsAmountBread.get(9).setEditable(false);
+        textFieldsAmountBread.get(9).setFont(Font.font("Verdana", FontWeight.BOLD, 12));
 
-            toggleButtons.get(2).setLayoutY(50);
-            toggleButtons.get(2).setLayoutX(390);
-            toggleButtons.get(2).setText("4 h / 4.00 $");
-            toggleButtons.get(2).setFont(Font.font("Verdana", FontWeight.BOLD, 12));
-            toggleButtons.get(2).setTextFill(Color.BLACK);
-            toggleButtons.get(2).setContentDisplay(ContentDisplay.TOP);
+
+        textFieldsAmountBread.get(10).setLayoutX(635);
+        textFieldsAmountBread.get(10).setLayoutY(160);
+        textFieldsAmountBread.get(10).setText("30");
+        textFieldsAmountBread.get(10).setEditable(false);
+        textFieldsAmountBread.get(10).setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+
+
+        textFieldsAmountBread.get(11).setLayoutX(775);
+        textFieldsAmountBread.get(11).setLayoutY(160);
+        textFieldsAmountBread.get(11).setText("30");
+        textFieldsAmountBread.get(11).setEditable(false);
+        textFieldsAmountBread.get(11).setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+
+
+
+    }
+
+    private Pane getPanel() {
+        addTextFieldsToList();
+        for (TextField textField : textFieldsAmountBread) {
+            panel.getChildren().addAll(textField);
         }
-
+       /* numberFieldValidation();
+        amountFieldValidation();
+        buttonHandler();*/
+        setTextFieldsProperties();
+        setTextFieldsPreferredSizes();
+        return panel;
     }
 
-    private void setToggleButtonsImages() {
-        for (int i = 0; i < 3; i++) {
-            toggleButtons.get(0).setGraphic(getImageViewTransportTickets());
-            toggleButtons.get(1).setGraphic(getImageViewSecondTypeTickets());
-            toggleButtons.get(2).setGraphic(getImageViewThirdTypeTickets());
-        }
 
+    public ArrayList<TextField> getTextFields() {
+        return textFieldsAmountBread;
     }
 
-    public ArrayList<ToggleButton> getToggleButtons() {
-        createToggleButtons();
-        setToggleButtonsProparties();
-        setToggleButtonsImages();
-        return toggleButtons;
+    public TextField getFirst(){
+        return getTextFields().get(0);
     }
 
-    private void setImageViewTransportTickets() {
-        imageViewTransportTickets.setFitWidth(130);
-        imageViewTransportTickets.setFitHeight(150);
-        imageViewTransportTickets.setPreserveRatio(true);
 
 
-    }
 
-    private void setImageViewSecondTypeTickets() {
-        imageViewSecondTypeTickets.setFitWidth(130);
-        imageViewSecondTypeTickets.setFitHeight(150);
-        imageViewSecondTypeTickets.setPreserveRatio(true);
-
-
-    }
-
-    private void setImageViewThirdTypeTickets() {
-        imageViewThirdTypeTickets.setFitWidth(130);
-        imageViewThirdTypeTickets.setFitHeight(150);
-        imageViewThirdTypeTickets.setPreserveRatio(true);
-
-
-    }
-
-    private ImageView getImageViewThirdTypeTickets() {
-        setImageViewThirdTypeTickets();
-        return imageViewThirdTypeTickets;
-    }
-
-    private ImageView getImageViewSecondTypeTickets() {
-        setImageViewSecondTypeTickets();
-        return imageViewSecondTypeTickets;
-    }
-
-    private ImageView getImageViewTransportTickets() {
-        setImageViewTransportTickets();
-        return imageViewTransportTickets;
-    }
 
     public Group getGroup() {
         return group = new Group();
     }
 
     public Scene getScene() {
-        return scene = new Scene(group, 700, 600, Color.web("#380B61"));
+        return scene = new Scene(group, 850, 650, Color.web("#ffc46b"));
     }
 
     public void addNodesToLayout() {
-        getGroup().getChildren().addAll(getPane(), getBuyTicketButton(), getBackToMenuButton());
+        getGroup().getChildren().addAll(getPanel(),getBackToMenuButton(),breadOptionComponents.getBaguetteImageView(),
+                breadOptionComponents.getCroissantImageView(),breadOptionComponents.getRollBreadImageView(),
+                breadOptionComponents.getBreadImageView(),breadOptionComponents.getRollsImageView(),breadOptionComponents.getToastImageView());
     }
 }
 

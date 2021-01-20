@@ -12,7 +12,7 @@ import javafx.scene.text.Font;
 
 public class PaymentScene {
 
-    private static Button startButton = new Button("Start");
+    private static Button startButton = new Button("START");
     private static ProgressBar progressBar = new ProgressBar();
     private static Label finishedLabel = new Label("DONE !");
     private Group group;
@@ -24,14 +24,15 @@ public class PaymentScene {
     }
 
     public Scene getScene() {
-        return scene = new Scene(group, 450, 450, Color.web("#380B61"));
+        return scene = new Scene(group, 450, 450, Color.web("#ffc46b"));
     }
 
     private void setStartButtonProparties() {
         startButton.setPrefSize(80, 40);
         startButton.setLayoutX(185);
-        startButton.setLayoutY(330);
-        startButton.setStyle("-fx-background-color: #CFB53B; ");
+        startButton.setLayoutY(220);
+        startButton.setStyle("-fx-background-color: #4e524e; -fx-background-radius: 22 ");
+        startButton.setTextFill(Color.WHITE);
         startButton.setOnAction(e -> new FirstThread().createThread());
     }
 
@@ -68,7 +69,7 @@ public class PaymentScene {
     private void setBackToMenuProparties() {
         backToMenu.setLayoutX(165);
         backToMenu.setLayoutY(400);
-        backToMenu.setStyle("-fx-background-color: #7E807F; ");
+        backToMenu.setStyle("-fx-background-color: #4e524e; -fx-background-radius: 22 ");
         backToMenu.setPrefSize(120, 35);
         backToMenu.setTextFill(Color.WHITE);
         backToMenu.setDisable(false);

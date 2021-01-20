@@ -1,8 +1,11 @@
 package scenes_init;
 
+import javafx.application.Application;
+import javafx.event.ActionEvent;
 import javafx.geometry.Orientation;
 import javafx.geometry.Pos;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -13,9 +16,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import operations.ExchangeMoneyOperation;
-import operations.MoneyToPhoneAccountOperation;
-import operations.PublicTransportOperation;
-import operations.TransferBankSceneOperation;
+import second_scene.SecondSceneInit;
 
 import java.util.ArrayList;
 
@@ -34,22 +35,16 @@ public class AccountInfoScene {
     private Separator secondSeparator = new Separator();
     private Separator thirdSeparator = new Separator();
     private Separator fourthSeparator = new Separator();
-    private Separator fiftthSeparator = new Separator();
-    private DrinkOptionScene drinkOptionScene = new DrinkOptionScene();
-    private MoneyToPhoneAccountOperation moneyToPhoneAccountOperation = new MoneyToPhoneAccountOperation();
-    private TransferBankSceneOperation transferBankSceneOperation = new TransferBankSceneOperation();
-    private FruitOptionScene fruitOptionScene = new FruitOptionScene();
-    private BreadOptionScene breadOptionScene = new BreadOptionScene();
-    private PublicTransportOperation publicTransportOperation = new PublicTransportOperation();
+    private Separator fifthSeparator = new Separator();
     private ExchangeMoneyOperation exchangeMoneyOperation = new ExchangeMoneyOperation();
-    private VegetableOptionScene vegetableOptionScene = new VegetableOptionScene();
+    private ExchangeMoney exchangeMoney = new ExchangeMoney();
 
     public Group getGroup2() {
         return groupA = new Group();
     }
 
     public Scene getScene() {
-        return sceneA = new Scene(groupA, 450, 550, Color.web("#380B61"));
+        return sceneA = new Scene(groupA, 450, 550,Color.web("#ffc46b"));
     }
 
     private void setTotalAmountProparties() {
@@ -57,12 +52,11 @@ public class AccountInfoScene {
         totalAmount.setLayoutX(260);
         totalAmount.setLayoutY(160);
         totalAmount.setText("3000.00");
-        totalAmount.setEditable(true);
+        totalAmount.setEditable(false);
         totalAmount.setAlignment(Pos.CENTER);
         totalAmount.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
-        setTopYourAccountButtonTask();
+        //setTopYourAccountButtonTask();
         //setSendTransferButtonTask();
-        setBuyTicketButtonTask();
         setExchangeButtonTask();
     }
 
@@ -77,7 +71,7 @@ public class AccountInfoScene {
         totalAmountInEuro.setLayoutX(260);
         totalAmountInEuro.setLayoutY(210);
         totalAmountInEuro.setText("3000.00");
-        totalAmountInEuro.setEditable(true);
+        totalAmountInEuro.setEditable(false);
         totalAmountInEuro.setAlignment(Pos.CENTER);
         totalAmountInEuro.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
     }
@@ -99,32 +93,32 @@ public class AccountInfoScene {
             labels.get(0).setText("Client ID: 1997123");
             labels.get(0).setLayoutX(140);
             labels.get(0).setLayoutY(10);
-            labels.get(0).setTextFill(Color.WHITE);
+            labels.get(0).setTextFill(Color.BLACK);
             labels.get(0).setFont(Font.font(20));
 
 
             labels.get(1).setText("Name: Marcin");
             labels.get(1).setLayoutX(160);
             labels.get(1).setLayoutY(60);
-            labels.get(1).setTextFill(Color.WHITE);
+            labels.get(1).setTextFill(Color.BLACK);
             labels.get(1).setFont(Font.font(20));
 
             labels.get(2).setText("Surname: Jóźwiak");
             labels.get(2).setLayoutX(140);
             labels.get(2).setLayoutY(110);
-            labels.get(2).setTextFill(Color.WHITE);
+            labels.get(2).setTextFill(Color.BLACK);
             labels.get(2).setFont(Font.font(20));
 
-            labels.get(3).setText("Avaiable Balance $:");
+            labels.get(3).setText("Available Balance $:");
             labels.get(3).setLayoutX(70);
             labels.get(3).setLayoutY(160);
-            labels.get(3).setTextFill(Color.WHITE);
+            labels.get(3).setTextFill(Color.BLACK);
             labels.get(3).setFont(Font.font(20));
 
-            labels.get(4).setText("Avaiable Balance €:");
+            labels.get(4).setText("Available Balance €:");
             labels.get(4).setLayoutX(70);
             labels.get(4).setLayoutY(210);
-            labels.get(4).setTextFill(Color.WHITE);
+            labels.get(4).setTextFill(Color.BLACK);
             labels.get(4).setFont(Font.font(20));
         }
     }
@@ -187,21 +181,21 @@ public class AccountInfoScene {
     }
 
     private void setFifthSeparator() {
-        fiftthSeparator.setOrientation(Orientation.HORIZONTAL);
-        fiftthSeparator.setPrefWidth(450);
-        fiftthSeparator.setLayoutY(250);
-        fiftthSeparator.setStyle("-fx-background-color:yellow; ");
+        fifthSeparator.setOrientation(Orientation.HORIZONTAL);
+        fifthSeparator.setPrefWidth(450);
+        fifthSeparator.setLayoutY(250);
+        fifthSeparator.setStyle("-fx-background-color:yellow; ");
     }
 
-    private Separator getFiftthSeparator() {
+    private Separator getFifthSeparator() {
         setFifthSeparator();
-        return fiftthSeparator;
+        return fifthSeparator;
     }
 
     private void setButtonProparties() {
         backToMenu.setLayoutX(150);
         backToMenu.setLayoutY(350);
-        backToMenu.setStyle("-fx-background-color: #7E807F; ");
+        backToMenu.setStyle("-fx-background-color: #4e524e; -fx-background-radius: 22 ");
         backToMenu.setPrefSize(150, 35);
         backToMenu.setTextFill(Color.WHITE);
         backToMenu.setDisable(false);
@@ -216,24 +210,21 @@ public class AccountInfoScene {
 
 
     public void addNodesToLayout() {
-        getGroup2().getChildren().addAll(getBackToMenuButton(), getPanel(), getFirstSeparator(), getSecondSeparator(), getThirdSeparator(), getFourthSeparator(), getFiftthSeparator(), getTotalAmount(), getTotalAmountInEuro());
+        getGroup2().getChildren().addAll(getBackToMenuButton(), getPanel(), getFirstSeparator(), getSecondSeparator(), getThirdSeparator(), getFourthSeparator(), getFifthSeparator(), getTotalAmount(), getTotalAmountInEuro());
     }
 
-    private void setTopYourAccountButtonTask() {
+   /* private void setTopYourAccountButtonTask() {
         drinkOptionScene.getTopYourAccount().setOnAction(e -> moneyToPhoneAccountOperation.Operations());
-    }
+    }*/
 
 /*    private void setSendTransferButtonTask() {
         fruitOptionScene.getSendTransfer().setOnAction(e -> transferBankSceneOperation.Operations());
     }*/
 
 
-    private void setBuyTicketButtonTask() {
-        breadOptionScene.getBuyTicketButton().setOnAction(e -> publicTransportOperation.Operations());
-    }
 
     private void setExchangeButtonTask() {
-        vegetableOptionScene.getExchange().setOnAction(e -> exchangeMoneyOperation.exchangeButtonHandler());
+        exchangeMoney.getExchange().setOnAction(e -> exchangeMoneyOperation.exchangeButtonHandler());
     }
 
 }

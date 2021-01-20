@@ -4,25 +4,27 @@ import javafx.scene.control.Tooltip;
 
 public class ButtonsEffects {
     private Tooltip accountInfoButton = new Tooltip();
-    private Tooltip transferButton = new Tooltip();
-    private Tooltip exchangeButton = new Tooltip();
-    private Tooltip buyTicketsButton = new Tooltip();
-    private Tooltip smartphonepaymentButton = new Tooltip();
-    private Tooltip phoneAccountMoneyButton = new Tooltip();
+    private Tooltip fruitButton = new Tooltip();
+    private Tooltip vegetableButton = new Tooltip();
+    private Tooltip breadButton = new Tooltip();
+    private Tooltip exchangeMoneyButton = new Tooltip();
+    private Tooltip drinksButton = new Tooltip();
+    private Tooltip paymentPhoneButton = new Tooltip();
 
 
 
 
 
-    private void setPhoneAccountMoneyEffects() {
-        phoneAccountMoneyButton.setText("Money To Phone Account");
-        phoneAccountMoneyButton.setStyle("-fx-font: normal bold 12 Langdon; "
+
+    private void setDrinkButtonEffects() {
+        drinksButton.setText("Drinks");
+        drinksButton.setStyle("-fx-font: normal bold 12 Langdon; "
                 + "-fx-text-fill: orange;");
     }
 
-    public Tooltip getPhoneAccountMoney() {
-        setPhoneAccountMoneyEffects();
-        return phoneAccountMoneyButton;
+    public Tooltip getDrinksButton() {
+        setDrinkButtonEffects();
+        return drinksButton;
     }
 
     public Tooltip getAccountInfoButton() {
@@ -36,49 +38,59 @@ public class ButtonsEffects {
                 + "-fx-text-fill: orange;");
     }
 
-    public Tooltip getExchangeButton() {
-        setExchangeButtonEffects();
-        return exchangeButton;
+    public Tooltip getVegetableButton() {
+        setVegetableButtonEffects();
+        return vegetableButton;
     }
 
-    private void setExchangeButtonEffects() {
-        exchangeButton.setText("Exchange Money");
-        exchangeButton.setStyle("-fx-font: normal bold 12 Langdon; "
+    private void setVegetableButtonEffects() {
+        vegetableButton.setText("Vegetables");
+        vegetableButton.setStyle("-fx-font: normal bold 12 Langdon; "
                 + "-fx-text-fill: orange;");
     }
 
-    public Tooltip getTransferButton() {
-        setTransferButtonEffects();
-        return transferButton;
+    public Tooltip getFruitButton() {
+        setFruitButtonEffects();
+        return fruitButton;
     }
 
-    private void setTransferButtonEffects() {
-        transferButton.setText("Bank Transfer");
-        transferButton.setStyle("-fx-font: normal bold 12 Langdon; "
+    private void setFruitButtonEffects() {
+        fruitButton.setText("Fruits");
+        fruitButton.setStyle("-fx-font: normal bold 12 Langdon; "
                 + "-fx-text-fill: orange;");
     }
 
-    public Tooltip getBuyTicketsButton() {
-        setBuyTicketsButtonEffects();
-        return buyTicketsButton;
+    public Tooltip getBreadButton() {
+        setBreadButtonEffects();
+        return breadButton;
     }
 
 
-    private void setBuyTicketsButtonEffects() {
-        buyTicketsButton.setText("Public Transport Tickets");
-        buyTicketsButton.setStyle("-fx-font: normal bold 12 Langdon; "
+    private void setBreadButtonEffects() {
+        breadButton.setText("Bread");
+        breadButton.setStyle("-fx-font: normal bold 12 Langdon; "
                 + "-fx-text-fill: orange;");
     }
 
-    private void setSmatphonePaymentButtonEffects() {
-        smartphonepaymentButton.setText("Smartphone Payment");
-        smartphonepaymentButton.setStyle("-fx-font: normal bold 12 Langdon; "
+    private void setExchangeMoneyButtonEffects() {
+        exchangeMoneyButton.setText("Exchange Money");
+        exchangeMoneyButton.setStyle("-fx-font: normal bold 12 Langdon; "
                 + "-fx-text-fill: orange;");
     }
 
-    public Tooltip getSmartphonepayment() {
-        setSmatphonePaymentButtonEffects();
-        return smartphonepaymentButton;
+    public Tooltip getExchangeMoneyButton() {
+        setExchangeMoneyButtonEffects();
+        return exchangeMoneyButton;
+    }
+    private void setPaymentPhoneButtonEffects() {
+        paymentPhoneButton.setText("Phone Payment");
+        paymentPhoneButton.setStyle("-fx-font: normal bold 12 Langdon; "
+                + "-fx-text-fill: orange;");
+    }
+
+    public Tooltip getPaymentPhoneButton() {
+        setPaymentPhoneButtonEffects();
+        return paymentPhoneButton;
     }
 
 

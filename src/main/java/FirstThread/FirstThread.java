@@ -10,6 +10,7 @@ public class FirstThread {
 
 
     public void createThread() {
+
         Thread thread = new Thread(() -> {
             for (int i = 0; i < 100; i++) {
                 double progressValue = 0.01 * i;
@@ -25,7 +26,7 @@ public class FirstThread {
         });
 
         paymentScene.getStartButton().setOnAction(actionEvent -> {
-            paymentScene.getStartButton().setDisable(true);
+            //paymentScene.getStartButton().setDisable(true);
             smartphonePaymentOperation.Operations();
             thread.start();
         });

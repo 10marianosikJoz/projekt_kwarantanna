@@ -2,7 +2,7 @@ package operations;
 
 import currencies.Currencies;
 import scenes_init.AccountInfoScene;
-import scenes_init.VegetableOptionScene;
+import scenes_init.ExchangeMoney;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
@@ -12,7 +12,7 @@ public class ExchangeMoneyOperation {
     private BigDecimal convert;
     private BigDecimal convertEuro;
     private BigDecimal convertAmount;
-    private VegetableOptionScene vegetableOptionScene = new VegetableOptionScene();
+    private ExchangeMoney exchangeMoney = new ExchangeMoney();
     private Currencies currencies = new Currencies();
 
     private String getAccountInfoTotalAmountField() {
@@ -34,11 +34,11 @@ public class ExchangeMoneyOperation {
     }
 
     private String getTextFromEuroField() {
-        return vegetableOptionScene.getTextFields().get(0).getText();
+        return exchangeMoney.getTextFields().get(0).getText();
     }
 
     private String getTextFromDollarField() {
-        return vegetableOptionScene.getTextFields().get(1).getText();
+        return exchangeMoney.getTextFields().get(1).getText();
     }
 
     private BigDecimal convertEuroToBigDecimal() {
@@ -75,7 +75,7 @@ public class ExchangeMoneyOperation {
 
     public void Operations() {
         BigDecimal result = convertEuroToBigDecimal().multiply(currencies.getEURO().setScale(1, RoundingMode.HALF_DOWN));
-        vegetableOptionScene.getTextFields().get(1).setText(result.toString());
+        exchangeMoney.getTextFields().get(1).setText(result.toString());
 
     }
 

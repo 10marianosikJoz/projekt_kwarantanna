@@ -23,8 +23,9 @@ public class FrameInit extends Application {
     private FruitOptionScene fruitOptionScene = new FruitOptionScene();
     private DrinkOptionScene drinkOptionScene = new DrinkOptionScene();
     private UserLoginData userLoginData = new UserLoginData();
+    private ExchangeMoney exchangeMoney = new ExchangeMoney();
     private VegetableOptionScene vegetableOptionScene = new VegetableOptionScene();
-    Stage window;
+    private ShoppingCart shoppingCart = new ShoppingCart();
 
     public static void main(String[] args) {
         launch(args);
@@ -41,7 +42,6 @@ public class FrameInit extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-    window = primaryStage;
 
         initGroupLayout();
         secondSceneInit.getSecondGroupLayout();
@@ -51,7 +51,9 @@ public class FrameInit extends Application {
         fruitOptionScene.addNodesToLayout();
         secondSceneInit.addToSecondLayout();
         drinkOptionScene.addNodesToLayout();
+        exchangeMoney.addNodesToLayout();
         vegetableOptionScene.addNodesToLayout();
+        shoppingCart.addNodesToLayout();
 
 
 
@@ -95,17 +97,18 @@ public class FrameInit extends Application {
 
 
         accountInfoScene.getBackToMenuButton().setOnAction(e -> {
-            window.setScene(secondSceneInit.getDuplicateScene());
-            window.centerOnScreen();
+            primaryStage.setScene(secondSceneInit.getDuplicateScene());
+            primaryStage.centerOnScreen();
         });
 
         breadOptionScene.getBackToMenuButton().setOnAction(e -> {
             primaryStage.setScene(secondSceneInit.getDuplicateScene());
-           primaryStage.centerOnScreen();
+        primaryStage.centerOnScreen();
+
 
 
         });
-        vegetableOptionScene.getBackToMenu().setOnAction(e -> {
+        exchangeMoney.getBackToMenu().setOnAction(e -> {
             primaryStage.setScene(secondSceneInit.getDuplicateScene());
             primaryStage.centerOnScreen();
         });
@@ -122,12 +125,20 @@ public class FrameInit extends Application {
             primaryStage.setScene(secondSceneInit.getDuplicateScene());
             primaryStage.centerOnScreen();
         });
+        vegetableOptionScene.getBackToMenuButton().setOnAction(e -> {
+            primaryStage.setScene(secondSceneInit.getDuplicateScene());
+            primaryStage.centerOnScreen();
+        });
+        shoppingCart.getBackToMenuButton().setOnAction(e -> {
+            primaryStage.setScene(secondSceneInit.getDuplicateScene());
+            primaryStage.centerOnScreen();
+        });
 
 
-        for (int i = 0; i < secondSceneInit.getButtonsList().size(); i++) {
+
             secondSceneInit.getButtonsList().get(0).setOnAction(e -> {
-                window.setScene(accountInfoScene.getScene());
-                window.centerOnScreen();
+                primaryStage.setScene(accountInfoScene.getScene());
+                primaryStage.centerOnScreen();
             });
             secondSceneInit.getButtonsList().get(1).setOnAction(e -> {
 
@@ -141,7 +152,7 @@ public class FrameInit extends Application {
             });
             secondSceneInit.getButtonsList().get(3).setOnAction(e -> {
 
-                primaryStage.setScene(vegetableOptionScene.getScene());
+                primaryStage.setScene(exchangeMoney.getScene());
                 primaryStage.centerOnScreen();
             });
             secondSceneInit.getButtonsList().get(4).setOnAction(e -> {
@@ -152,19 +163,29 @@ public class FrameInit extends Application {
                 primaryStage.setScene(drinkOptionScene.getScene());
                 primaryStage.centerOnScreen();
             });
+            secondSceneInit.getButtonsList().get(6).setOnAction(e -> {
+                primaryStage.setScene(vegetableOptionScene.getScene());
+                primaryStage.centerOnScreen();
+            });
+        secondSceneInit.getButtonsList().get(7).setOnAction(e -> {
+            primaryStage.setScene(shoppingCart.getScene());
+            primaryStage.centerOnScreen();
+        });
 
 
 
-        }
+
+
 
 
         primaryStage.centerOnScreen();
         primaryStage.setScene(getScene());
-        primaryStage.setTitle("Bank Application");
+        primaryStage.setTitle("Application");
         primaryStage.setResizable(false);
         primaryStage.setFullScreen(false);
         primaryStage.show();
 
 
     }
+
 }

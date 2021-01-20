@@ -15,9 +15,9 @@ public class MoneyToPhoneAccountOperation {
         return accountInfoScene.getTotalAmount();
     }
 
-    private String getTextFromField() {
+  /*  private String getTextFromField() {
         return drinkOptionScene.getAmountFields().get(0).getText();
-    }
+    }*/
 
     private BigDecimal convertToBigDecimal() {
         String mountValue = getAccountInfoTotalAmountField().getText();
@@ -25,7 +25,7 @@ public class MoneyToPhoneAccountOperation {
 
         return convertAmount;
     }
-
+/*
     public void Operations() {
         BigDecimal convert = new BigDecimal(getTextFromField());
         BigDecimal score = convertToBigDecimal().subtract(convert);
@@ -36,5 +36,5 @@ public class MoneyToPhoneAccountOperation {
             accountInfoScene.getTotalAmount().setText(score.toString());
         }
 
-    }
+    }*/
 }

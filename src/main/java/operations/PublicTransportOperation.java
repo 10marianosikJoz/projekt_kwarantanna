@@ -28,24 +28,4 @@ public class PublicTransportOperation {
         return convertAmount;
     }
 
-    private ArrayList<ToggleButton> toggleButton() {
-
-        return breadOptionScene.getToggleButtons();
-    }
-
-    public void Operations() {
-        BigDecimal firstResult = convertToBigDecimal().subtract(firstTicket);
-        BigDecimal secondResult = convertToBigDecimal().subtract(secondTicket);
-        BigDecimal thirdResult = convertToBigDecimal().subtract(thirdTicket);
-
-        if (toggleButton().get(0).isSelected()) {
-            accountInfoScene.getTotalAmount().setText(firstResult.toString());
-
-        } else if (toggleButton().get(1).isSelected()) {
-            accountInfoScene.getTotalAmount().setText(secondResult.toString());
-        } else if (toggleButton().get(2).isSelected()) {
-            accountInfoScene.getTotalAmount().setText(thirdResult.toString());
-        }
-
-    }
 }

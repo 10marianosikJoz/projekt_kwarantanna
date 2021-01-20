@@ -1,106 +1,101 @@
 package scenes_init;
 
-import javafx.geometry.Pos;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
-import textfields_formatters.MoneyToPhoneFieldsFormatter;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
+import javafx.scene.text.Text;
+import options_components.DrinkOptionComponents;
+import shopping_card_textfields.DrinkTextFields;
+import textfields_formatters.InputAmountFieldsFormatter;
 
 import java.util.ArrayList;
 
 public class DrinkOptionScene {
-    private static ArrayList<TextField> amountFields = new ArrayList<>(3);
-    private static Button topYourAccount = new Button("TOP UP YOUR ACCOUNT");
+
     private Group group;
     private Scene scene;
     private Pane panel = new Pane();
     private Button backToMenu = new Button("BACK TO MENU");
-    private MoneyToPhoneFieldsFormatter moneyToPhoneFieldsFormatter = new MoneyToPhoneFieldsFormatter();
-
-    public ArrayList<TextField> getAmountFields() {
-        return amountFields;
-    }
-
-    private void setTopYourAccountProparties() {
-        topYourAccount.setPrefSize(150, 40);
-        topYourAccount.setLayoutX(200);
-        topYourAccount.setLayoutY(350);
-        topYourAccount.setStyle("-fx-background-color: #CFB53B; ");
-        topYourAccount.setTextFill(Color.WHITE);
+    private static TextField first = new TextField();
+    private static TextField second = new TextField();
+    private static TextField third = new TextField();
+    private static TextField fourth = new TextField();
+    private static ArrayList<TextField> textFieldsAmountDrink = new ArrayList<>();
+    private DrinkOptionComponents drinkOptionComponents = new DrinkOptionComponents();
+    private InputAmountFieldsFormatter inputAmountFieldsFormatter = new InputAmountFieldsFormatter();
+    private Button addToShoppingCart = new Button("ADD ITEMS");
+    DrinkTextFields drinkTextFields =  new DrinkTextFields();
 
 
-    }
+
+    private void setTextFieldsProperties(){
+        first.setLayoutX(45);
+        first.setLayoutY(160);
+        first.setTextFormatter(inputAmountFieldsFormatter.getAmountNumberFormatter());
+        first.setPrefSize(35,35);
+        first.setText("0");
+
+        second.setLayoutX(165);
+        second.setLayoutY(160);
+        second.setTextFormatter(inputAmountFieldsFormatter.getAmountNumberFormatter());
+        second.setPrefSize(35,35);
+        second.setText("0");
+
+        third.setLayoutX(95);
+        third.setLayoutY(160);
+        third.setText("30");
+        third.setEditable(false);
+        third.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+        third.setPrefSize(35,35);
 
 
-    public Button getTopYourAccount() {
-        setTopYourAccountProparties();
-        return topYourAccount;
+        fourth.setLayoutX(215);
+        fourth.setLayoutY(160);
+        fourth.setText("30");
+        fourth.setEditable(false);
+        fourth.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+        fourth.setPrefSize(35,35);
+
     }
 
     private void addTextFieldsToList() {
-        for (int i = 0; i < 3; i++) {
-            amountFields.add(new TextField());
+        for (int i = 0; i < 12; i++) {
+            textFieldsAmountDrink.add(new TextField());
         }
     }
 
-    private void setAmountFieldsProperties() {
-        for (TextField amountField : amountFields) {
-            amountField.setAlignment(Pos.CENTER);
+    private void setTextFieldsPreferredSizes() {
+        for (TextField textField : textFieldsAmountDrink) {
+            textField.setPrefSize(35, 35);
         }
-        textFieldNumberValidation();
-        textFieldAmountValidation();
-        buttonHandler();
-        amountFields.get(0).setPrefSize(200, 40);
-        amountFields.get(0).setPromptText("Enter amount");
-        amountFields.get(0).setLayoutX(175);
-        amountFields.get(0).setLayoutY(50);
-
-        amountFields.get(1).setPrefSize(300, 40);
-        amountFields.get(1).setPromptText("Enter phone number");
-        amountFields.get(1).setLayoutY(125);
-        amountFields.get(1).setLayoutX(125);
-        amountFields.get(1).setTextFormatter(moneyToPhoneFieldsFormatter.getPhoneNumberFormatter());
-
-        amountFields.get(2).setPrefSize(150, 40);
-        amountFields.get(2).setPromptText("Enter SMS code");
-        amountFields.get(2).setLayoutY(200);
-        amountFields.get(2).setLayoutX(200);
-        amountFields.get(2).setTextFormatter(moneyToPhoneFieldsFormatter.getCodeNumberFormatter());
-
     }
+
+
+
+
 
     private Pane getPanel() {
-
-        addTextFieldsToList();
-        setAmountFieldsProperties();
-        for (TextField amountField : amountFields) {
-            panel.getChildren().addAll(amountField);
-        }
+        panel.getChildren().addAll(first,second,third,fourth);
+        setTextFieldsProperties();
+        setTextFieldsPreferredSizes();
         return panel;
     }
 
-    private String getFirstText() {
-        String text;
-        text = amountFields.get(0).getText();
-        return text;
+
+    public void setAddItemsButtonListener(){
+        addToShoppingCart.setOnAction(e ->{
+            drinkTextFields.getAmount().setText(first.getText());
+            drinkTextFields.getTeaAmount().setText(second.getText());
+        });
     }
 
-    private String getSecondText() {
-        String text;
-        text = amountFields.get(1).getText();
-        return text;
-    }
 
-    private String getThirdText() {
-        String text;
-        text = amountFields.get(2).getText();
-        return text;
-    }
-
-    private void buttonHandler() {
+ /*   private void buttonHandler() {
 
         for (TextField amountField : amountFields) {
             amountField.textProperty().addListener((observableValue, s, t1) -> {
@@ -114,9 +109,9 @@ public class DrinkOptionScene {
 
             });
         }
-    }
+    }*/
 
-    private void textFieldAmountValidation() {
+/*    private void textFieldAmountValidation() {
         amountFields.get(0).textProperty().addListener((observableValue, s, t1) -> {
             if (!t1.matches("\\d{0,7}([\\.]\\d{0,4})?")) {
                 amountFields.get(0).setText(s);
@@ -136,13 +131,13 @@ public class DrinkOptionScene {
                 topYourAccount.setDisable(false);
             }
         });
-    }
+    }*/
 
     private void setBackToMenuProparties() {
-        backToMenu.setLayoutX(215);
-        backToMenu.setLayoutY(420);
-        backToMenu.setStyle("-fx-background-color: #7E807F; ");
-        backToMenu.setPrefSize(120, 35);
+        backToMenu.setLayoutX(305);
+        backToMenu.setLayoutY(550);
+        backToMenu.setStyle("-fx-background-color: #4e524e; -fx-background-radius: 22 ");
+        backToMenu.setPrefSize(150, 35);
         backToMenu.setTextFill(Color.WHITE);
         backToMenu.setDisable(false);
     }
@@ -152,16 +147,33 @@ public class DrinkOptionScene {
         return backToMenu;
     }
 
+    private void setAddToShoppingCartButtonProparties() {
+        addToShoppingCart.setLayoutX(305);
+        addToShoppingCart.setLayoutY(450);
+        addToShoppingCart.setStyle("-fx-background-color: #4e524e; -fx-background-radius: 22 ");
+        addToShoppingCart.setPrefSize(150, 35);
+        addToShoppingCart.setTextFill(Color.WHITE);
+        addToShoppingCart.setDisable(false);
+    }
+
+    public Button getAddToShoppingCart() {
+        setAddItemsButtonListener();
+        setAddToShoppingCartButtonProparties();
+        return addToShoppingCart;
+    }
+
     public Group getGroup() {
         return group = new Group();
     }
 
     public Scene getScene() {
-        return scene = new Scene(group, 550, 500, Color.web("#380B61"));
+        return scene = new Scene(group, 760, 650, Color.web("#ffc46b"));
     }
 
     public void addNodesToLayout() {
-        getGroup().getChildren().addAll(getPanel(), getTopYourAccount(), getBackToMenu());
+        getGroup().getChildren().addAll(getAddToShoppingCart(),getPanel(),getBackToMenu(),drinkOptionComponents.getBeerImageView(),
+                drinkOptionComponents.getCoffeeImageView(),drinkOptionComponents.getColaImageView(),drinkOptionComponents.getJuiceImageView(),
+                drinkOptionComponents.getTeaImageView(),drinkOptionComponents.getWaterImageView());
     }
 
 
