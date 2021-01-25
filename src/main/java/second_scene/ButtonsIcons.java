@@ -20,6 +20,7 @@ public class ButtonsIcons {
     private ImageView imageViewDrink = new ImageView(imageDrink);
     private Image imageVegetable = new Image("warzywa.png", 150, 100, true, true);
     private ImageView imageViewVegetable = new ImageView(imageVegetable);
-
+    private Image imageShoppingCart = new Image("koszyk.png", 150, 100, true, true);
+    private ImageView imageViewShoppingCart = new ImageView(imageShoppingCart);
 
 }

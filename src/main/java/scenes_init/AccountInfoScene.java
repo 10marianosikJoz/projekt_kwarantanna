@@ -44,7 +44,12 @@ public class AccountInfoScene {
     }
 
     public Scene getScene() {
-        return sceneA = new Scene(groupA, 450, 550,Color.web("#ffc46b"));
+        if(sceneA == null){
+            return sceneA = new Scene(groupA, 450, 550,Color.web("#ffc46b"));
+        }else
+            return sceneA;
+
+
     }
 
     private void setTotalAmountProparties() {
@@ -55,8 +60,6 @@ public class AccountInfoScene {
         totalAmount.setEditable(false);
         totalAmount.setAlignment(Pos.CENTER);
         totalAmount.setFont(Font.font("Verdana", FontWeight.BOLD, 15));
-        //setTopYourAccountButtonTask();
-        //setSendTransferButtonTask();
         setExchangeButtonTask();
     }
 
@@ -212,15 +215,6 @@ public class AccountInfoScene {
     public void addNodesToLayout() {
         getGroup2().getChildren().addAll(getBackToMenuButton(), getPanel(), getFirstSeparator(), getSecondSeparator(), getThirdSeparator(), getFourthSeparator(), getFifthSeparator(), getTotalAmount(), getTotalAmountInEuro());
     }
-
-   /* private void setTopYourAccountButtonTask() {
-        drinkOptionScene.getTopYourAccount().setOnAction(e -> moneyToPhoneAccountOperation.Operations());
-    }*/
-
-/*    private void setSendTransferButtonTask() {
-        fruitOptionScene.getSendTransfer().setOnAction(e -> transferBankSceneOperation.Operations());
-    }*/
-
 
 
     private void setExchangeButtonTask() {

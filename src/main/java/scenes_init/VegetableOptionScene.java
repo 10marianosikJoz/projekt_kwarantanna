@@ -9,22 +9,97 @@ import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import options_components.VegetableOptionComponents;
+import shopping_cart_textfields.*;
 import textfields_formatters.InputAmountFieldsFormatter;
 
-import java.util.ArrayList;
-
 public class VegetableOptionScene {
+
     private Group group;
     private Scene scene;
     private Pane panel = new Pane();
+    private static TextField first = new TextField();
+    private static TextField second = new TextField();
+    private static TextField third = new TextField();
+    private static TextField fourth = new TextField();
+    private static TextField fifth = new TextField();
+    private static TextField sixth = new TextField();
+    private static TextField seventh = new TextField();
+    private static TextField eighth = new TextField();
+    private static TextField ninth = new TextField();
+    private static TextField tenth = new TextField();
+    private static TextField eleventh = new TextField();
+    private static TextField twelfth = new TextField();
     private Button backToMenu = new Button("BACK TO MENU");
-    private static ArrayList<TextField> textFieldsAmountVegetables = new ArrayList<>();
+    private Button addToShoppingCart = new Button("ADD ITEMS");
     private VegetableOptionComponents vegetableOptionComponents = new VegetableOptionComponents();
     private InputAmountFieldsFormatter inputAmountFieldsFormatter = new InputAmountFieldsFormatter();
+    private VegetableOnionTextFields vegetableOnionTextFields = new VegetableOnionTextFields();
+    private VegetableCucumberTextFields vegetableCucumberTextFields = new VegetableCucumberTextFields();
+    private VegetableTomatoTextFields vegetableTomatoTextFields = new VegetableTomatoTextFields();
+    private VegetablePaprikaTextFields vegetablePaprikaTextFields = new VegetablePaprikaTextFields();
+    private VegetableSaladTextFields vegetableSaladTextFields = new VegetableSaladTextFields();
+    private VegetableCarrotTextFields vegetableCarrotTextFields = new VegetableCarrotTextFields();
+
+    public  TextField getFirst() {
+        return first;
+    }
+
+    public  TextField getThird() {
+        return third;
+    }
+
+    public  TextField getFifth() {
+        return fifth;
+    }
+
+    public  TextField getSeventh() {
+        return seventh;
+    }
+
+    public  TextField getNinth() {
+        return ninth;
+    }
+
+    public  TextField getEleventh() {
+        return eleventh;
+    }
+
+    private void setAddToShoppingCartButtonProparties() {
+        addToShoppingCart.setLayoutX(315);
+        addToShoppingCart.setLayoutY(450);
+        addToShoppingCart.setStyle("-fx-background-color: #4e524e; -fx-background-radius: 22 ");
+        addToShoppingCart.setPrefSize(150, 35);
+        addToShoppingCart.setTextFill(Color.WHITE);
+        addToShoppingCart.setDisable(false);
+    }
+
+    public Button getAddToShoppingCart() {
+        setAddItemsButtonListener();
+        setAddToShoppingCartButtonProparties();
+        return addToShoppingCart;
+    }
+
+    private void setAddItemsButtonListener() {
+        addToShoppingCart.setOnAction(e -> {
+            vegetableOnionTextFields.getOnionAmount().setText(first.getText());
+            vegetableSaladTextFields.getSaladAmount().setText(third.getText());
+            vegetableCarrotTextFields.getCarrotAmount().setText(fifth.getText());
+            vegetablePaprikaTextFields.getPaprikaAmount().setText(seventh.getText());
+            vegetableTomatoTextFields.getTomatoAmount().setText(ninth.getText());
+            vegetableCucumberTextFields.getCucumberAmount().setText(eleventh.getText());
+          /*  first.setText("0");
+            third.setText("0");
+            fifth.setText("0");
+            seventh.setText("0");
+            ninth.setText("0");
+            eleventh.setText("0");*/
+
+        });
+    }
 
     private void setBackToMenuButtonProparties() {
         backToMenu.setLayoutX(315);
-        backToMenu.setLayoutY(550);
+        backToMenu.setLayoutY(500);
         backToMenu.setStyle("-fx-background-color: #4e524e; -fx-background-radius: 22 ");
         backToMenu.setPrefSize(150, 35);
         backToMenu.setTextFill(Color.WHITE);
@@ -37,113 +112,118 @@ public class VegetableOptionScene {
         return backToMenu;
     }
 
-    private void addTextFieldsToList() {
-        for (int i = 0; i < 12; i++) {
-            textFieldsAmountVegetables.add(new TextField());
-        }
-    }
-
-    private void setTextFieldsPreferredSizes() {
-        for (TextField textField : textFieldsAmountVegetables) {
-            textField.setPrefSize(35, 35);
-        }
-    }
     private void setTextFieldsProperties() {
-        textFieldsAmountVegetables.get(0).setLayoutX(35);
-        textFieldsAmountVegetables.get(0).setLayoutY(160);
-        textFieldsAmountVegetables.get(0).setTextFormatter(inputAmountFieldsFormatter.getAmountNumberFormatter());
 
-        textFieldsAmountVegetables.get(1).setLayoutX(165);
-        textFieldsAmountVegetables.get(1).setLayoutY(160);
-        textFieldsAmountVegetables.get(1).setTextFormatter(inputAmountFieldsFormatter.getAmountNumberFormatter());
+        first.setLayoutX(35);
+        first.setLayoutY(160);
+        first.setTextFormatter(inputAmountFieldsFormatter.getAmountNumberFormatter());
+        first.setPrefSize(35, 35);
+        first.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+        first.setText("0");
 
-        textFieldsAmountVegetables.get(2).setLayoutX(285);
-        textFieldsAmountVegetables.get(2).setLayoutY(160);
-        textFieldsAmountVegetables.get(2).setTextFormatter(inputAmountFieldsFormatter.getAmountNumberFormatter());
+        second.setLayoutX(90);
+        second.setLayoutY(160);
+        second.setPrefSize(35, 35);
+        second.setEditable(false);
+        second.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+        second.setText("99");
 
-        textFieldsAmountVegetables.get(3).setLayoutX(405);
-        textFieldsAmountVegetables.get(3).setLayoutY(160);
-        textFieldsAmountVegetables.get(3).setTextFormatter(inputAmountFieldsFormatter.getAmountNumberFormatter());
-
-        textFieldsAmountVegetables.get(4).setLayoutX(525);
-        textFieldsAmountVegetables.get(4).setLayoutY(160);
-        textFieldsAmountVegetables.get(4).setTextFormatter(inputAmountFieldsFormatter.getAmountNumberFormatter());
-
-        textFieldsAmountVegetables.get(5).setLayoutX(650);
-        textFieldsAmountVegetables.get(5).setLayoutY(160);
-        textFieldsAmountVegetables.get(5).setTextFormatter(inputAmountFieldsFormatter.getAmountNumberFormatter());
-
-        textFieldsAmountVegetables.get(6).setLayoutX(85);
-        textFieldsAmountVegetables.get(6).setLayoutY(160);
-        textFieldsAmountVegetables.get(6).setText("30");
-        textFieldsAmountVegetables.get(6).setEditable(false);
-        textFieldsAmountVegetables.get(6).setFont(Font.font("Verdana", FontWeight.BOLD, 12));
-
-        textFieldsAmountVegetables.get(7).setLayoutX(215);
-        textFieldsAmountVegetables.get(7).setLayoutY(160);
-        textFieldsAmountVegetables.get(7).setText("30");
-        textFieldsAmountVegetables.get(7).setEditable(false);
-        textFieldsAmountVegetables.get(7).setFont(Font.font("Verdana", FontWeight.BOLD, 12));
-
-        textFieldsAmountVegetables.get(8).setLayoutX(335);
-        textFieldsAmountVegetables.get(8).setLayoutY(160);
-        textFieldsAmountVegetables.get(8).setText("30");
-        textFieldsAmountVegetables.get(8).setEditable(false);
-        textFieldsAmountVegetables.get(8).setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+        third.setLayoutX(165);
+        third.setLayoutY(160);
+        third.setText("0");
+        third.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+        third.setTextFormatter(inputAmountFieldsFormatter.getAmountNumberFormatter());
+        third.setPrefSize(35, 35);
 
 
-        textFieldsAmountVegetables.get(9).setLayoutX(455);
-        textFieldsAmountVegetables.get(9).setLayoutY(160);
-        textFieldsAmountVegetables.get(9).setText("30");
-        textFieldsAmountVegetables.get(9).setEditable(false);
-        textFieldsAmountVegetables.get(9).setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+        fourth.setLayoutX(220);
+        fourth.setLayoutY(160);
+        fourth.setText("99");
+        fourth.setEditable(false);
+        fourth.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+        fourth.setPrefSize(35, 35);
+
+        fifth.setLayoutX(285);
+        fifth.setLayoutY(160);
+        fifth.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+        fifth.setTextFormatter(inputAmountFieldsFormatter.getAmountNumberFormatter());
+        fifth.setPrefSize(35, 35);
+        fifth.setText("0");
+
+        sixth.setLayoutX(335);
+        sixth.setLayoutY(160);
+        sixth.setText("99");
+        sixth.setEditable(false);
+        sixth.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+        sixth.setPrefSize(35, 35);
 
 
-        textFieldsAmountVegetables.get(10).setLayoutX(575);
-        textFieldsAmountVegetables.get(10).setLayoutY(160);
-        textFieldsAmountVegetables.get(10).setText("30");
-        textFieldsAmountVegetables.get(10).setEditable(false);
-        textFieldsAmountVegetables.get(10).setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+        seventh.setLayoutX(400);
+        seventh.setLayoutY(160);
+        seventh.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+        seventh.setTextFormatter(inputAmountFieldsFormatter.getAmountNumberFormatter());
+        seventh.setPrefSize(35, 35);
+        seventh.setText("0");
 
+        eighth.setLayoutX(455);
+        eighth.setLayoutY(160);
+        eighth.setText("99");
+        eighth.setEditable(false);
+        eighth.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+        eighth.setPrefSize(35, 35);
 
-        textFieldsAmountVegetables.get(11).setLayoutX(700);
-        textFieldsAmountVegetables.get(11).setLayoutY(160);
-        textFieldsAmountVegetables.get(11).setText("30");
-        textFieldsAmountVegetables.get(11).setEditable(false);
-        textFieldsAmountVegetables.get(11).setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+        ninth.setLayoutX(525);
+        ninth.setLayoutY(160);
+        ninth.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+        ninth.setTextFormatter(inputAmountFieldsFormatter.getAmountNumberFormatter());
+        ninth.setPrefSize(35, 35);
+        ninth.setText("0");
 
+        tenth.setLayoutX(575);
+        tenth.setLayoutY(160);
+        tenth.setText("99");
+        tenth.setEditable(false);
+        tenth.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+        tenth.setPrefSize(35, 35);
 
+        eleventh.setLayoutX(645);
+        eleventh.setLayoutY(160);
+        eleventh.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+        eleventh.setTextFormatter(inputAmountFieldsFormatter.getAmountNumberFormatter());
+        eleventh.setPrefSize(35, 35);
+        eleventh.setText("0");
+
+        twelfth.setLayoutX(695);
+        twelfth.setLayoutY(160);
+        twelfth.setText("99");
+        twelfth.setEditable(false);
+        twelfth.setFont(Font.font("Verdana", FontWeight.BOLD, 12));
+        twelfth.setTextFormatter(inputAmountFieldsFormatter.getAmountNumberFormatter());
+        twelfth.setPrefSize(35, 35);
 
     }
 
     private Pane getPanel() {
-        addTextFieldsToList();
-        for (TextField textField : textFieldsAmountVegetables) {
-            panel.getChildren().addAll(textField);
-        }
-       /* numberFieldValidation();
-        amountFieldValidation();
-        buttonHandler();*/
+        panel.getChildren().addAll(first, second, third, fourth, fifth, sixth, seventh, eighth, ninth, tenth, eleventh, twelfth);
         setTextFieldsProperties();
-        setTextFieldsPreferredSizes();
         return panel;
     }
 
-    public static ArrayList<TextField> getTextFieldsAmountVegetables() {
-        return textFieldsAmountVegetables;
-    }
 
     public Group getGroup() {
         return group = new Group();
     }
 
     public Scene getScene() {
-        return scene = new Scene(group, 780 , 650, Color.web("#ffc46b"));
+        if(scene == null){
+            return scene = new Scene(group, 780, 650, Color.web("#ffc46b"));
+        }else
+            return scene;
     }
 
     public void addNodesToLayout() {
-        getGroup().getChildren().addAll(getPanel(),getBackToMenuButton(),vegetableOptionComponents.getCabbageImageView(),vegetableOptionComponents.getCarrotImageView(),
-                vegetableOptionComponents.getGarlicImageView(),vegetableOptionComponents.getPaprikaImageView(),vegetableOptionComponents.getPotatoImageView(),
+        getGroup().getChildren().addAll(getAddToShoppingCart(),getPanel(), getBackToMenuButton(), vegetableOptionComponents.getCabbageImageView(), vegetableOptionComponents.getCarrotImageView(),
+                vegetableOptionComponents.getGarlicImageView(), vegetableOptionComponents.getPaprikaImageView(), vegetableOptionComponents.getPotatoImageView(),
                 vegetableOptionComponents.getTomatoImageView());
     }
 }

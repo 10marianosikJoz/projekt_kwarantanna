@@ -36,7 +36,11 @@ public class FrameInit extends Application {
     }
 
     public Scene getScene() {
-        return scene = new Scene(group, 600, 600, Color.web("#ffc46b"));
+        if(scene == null){
+            return scene = new Scene(group, 600, 600, Color.web("#ffc46b"));
+        }else
+            return scene;
+
     }
 
 

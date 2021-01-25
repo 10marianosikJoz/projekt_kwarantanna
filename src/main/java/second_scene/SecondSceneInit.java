@@ -79,6 +79,9 @@ public class SecondSceneInit {
             buttonsList.get(6).setGraphic(buttonsIcons.getImageViewVegetable());
             buttonsList.get(6).setTooltip(buttonsEffects.getVegetableButton());
 
+            buttonsList.get(7).setGraphic(buttonsIcons.getImageViewShoppingCart());
+            buttonsList.get(7).setTooltip(buttonsEffects.getShoppingCartButton());
+
         }
 
     }

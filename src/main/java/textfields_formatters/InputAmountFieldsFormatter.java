@@ -6,18 +6,18 @@ import java.util.regex.Pattern;
 
 public class InputAmountFieldsFormatter {
 
-    private Pattern getPatternPhoneNumber() {
-        Pattern pattern = Pattern.compile(".{0,12}");
+    public Pattern getPatternTotalSumOfItems() {
+        Pattern pattern = Pattern.compile("^\\d*\\.\\d+|\\d+\\.\\d*$");
         return pattern;
     }
-    private Pattern getPatternAmountInput(){
-        Pattern pattern = Pattern.compile("\\d{0,2}");
+    public Pattern getPatternAmountInput(){
+        Pattern pattern = Pattern.compile("(^([0-9]|[1-9][0-9])$)");
         return pattern;
     }
 
-    public TextFormatter getPhoneNumberFormatter() {
+    public TextFormatter getTotalSumNumberFormatter() {
         return new TextFormatter((UnaryOperator<TextFormatter.Change>) change -> {
-            return getPatternPhoneNumber().matcher(change.getControlNewText()).matches() ? change : null;
+            return getPatternTotalSumOfItems().matcher(change.getControlNewText()).matches() ? change : null;
 
         });
     }

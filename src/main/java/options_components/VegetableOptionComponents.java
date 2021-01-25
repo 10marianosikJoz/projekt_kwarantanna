@@ -15,8 +15,8 @@ public class VegetableOptionComponents {
     private ImageView paprikaImageView = new ImageView(paprikaImage);
     private Image tomatoImage = new Image("pomidor.png", 130, 130, true, true);
     private ImageView tomatoImageView = new ImageView(tomatoImage);
-    private Image potatoImage = new Image("ziemniaki.png", 130, 130, true, true);
-    private ImageView potatoImageView = new ImageView(potatoImage);
+    private Image cucumberImage = new Image("cucumber.png", 130, 130, true, true);
+    private ImageView cucumberImageView = new ImageView(cucumberImage);
 
     public void setGarlicProperties(){
         garlicImageView.setX(20);
@@ -64,12 +64,12 @@ public class VegetableOptionComponents {
         return tomatoImageView;
     }
     public void setPotatoProperties(){
-        potatoImageView.setX(630);
-        potatoImageView.setY(20);
+        cucumberImageView.setX(630);
+        cucumberImageView.setY(20);
     }
 
     public ImageView getPotatoImageView() {
         setPotatoProperties();
-        return potatoImageView;
+        return cucumberImageView;
     }
 }

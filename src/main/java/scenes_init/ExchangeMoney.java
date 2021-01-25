@@ -163,7 +163,11 @@ public class ExchangeMoney {
     }
 
     public Scene getScene() {
-        return sceneA = new Scene(groupA, 450, 550, Color.web("#ffc46b"));
+        if(sceneA == null){
+            return sceneA = new Scene(groupA, 450, 550, Color.web("#ffc46b"));
+        }else
+            return sceneA;
+
     }
 
     public void addNodesToLayout() {

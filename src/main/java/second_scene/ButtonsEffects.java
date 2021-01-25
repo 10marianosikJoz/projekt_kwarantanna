@@ -10,8 +10,19 @@ public class ButtonsEffects {
     private Tooltip exchangeMoneyButton = new Tooltip();
     private Tooltip drinksButton = new Tooltip();
     private Tooltip paymentPhoneButton = new Tooltip();
+    private Tooltip shoppingCartButton = new Tooltip();
 
 
+    private void setShoppingCartButtonEffects() {
+        shoppingCartButton.setText("Shopping Cart");
+        shoppingCartButton.setStyle("-fx-font: normal bold 12 Langdon; "
+                + "-fx-text-fill: orange;");
+    }
+
+    public Tooltip getShoppingCartButton() {
+        setShoppingCartButtonEffects();
+        return shoppingCartButton;
+    }
 
 
 

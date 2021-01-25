@@ -24,7 +24,12 @@ public class PaymentScene {
     }
 
     public Scene getScene() {
-        return scene = new Scene(group, 450, 450, Color.web("#ffc46b"));
+        if(scene == null){
+            return scene = new Scene(group, 450, 450, Color.web("#ffc46b"));
+        }else
+            return scene;
+
+
     }
 
     private void setStartButtonProparties() {
