@@ -1,1 +1,1 @@
-# Simple desktop order application
+# Simple desktop order application. Application based on Java / JavaFX technology.
