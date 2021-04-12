@@ -1,1 +1,1 @@
-# projekt_kwarantanna
+# Simple desktop order application
